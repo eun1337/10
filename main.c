@@ -2,17 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(int argc, char *argv[]) {
-	FILE* fp;
-	int i;
-	char str[100];
-	fp = fopen("sample.txt", "w");
-	for(i = 0; i < 3; i++) {
-		printf("input a word : ");
-		scanf("%s", str);
-		fprintf(fp, "%s\n", str);
-	}
-	fclose(fp);
+void main(int argc, char *argv[]) {
+	FILE* fp = NULL;
+	char c;
+	fp = fopen("sample.txt", "r");
+	if(fp == NULL)
+		printf("파일을 못열음\n");
+	while((c=fgetc(fp)) != EOF) 
+		putchar(c);
 	
-	return 0;
+	fclose(fp);
 }
